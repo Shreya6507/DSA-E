@@ -1,0 +1,37 @@
+class Solution {
+    public int[] arrayRankTransform(int[] arr) {
+           int[] temp = arr.clone();     // Copy the array
+        Arrays.sort(temp);            // Sort the copy
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int rank = 1;
+
+        // Assign ranks to unique elements
+        for (int num : temp) {
+            if (!map.containsKey(num)) {
+                map.put(num, rank);
+                rank++;
+            }
+        }
+
+        // Replace original values with ranks
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = map.get(arr[i]);
+        }
+
+        return arr;
+    }
+}
+class main{
+    public static void main(String args[]){
+        Solution obj= new Solution();
+        Scanner sc= new Scanner(System.in);
+        int n =sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        System.out.print(obj.arrayRankTransform(arr));
+    }
+}
