@@ -1,0 +1,23 @@
+class Solution {
+    public int findGCD(int[] nums) {
+        int mx=nums[0];
+        int mn=nums[0];
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>mx){
+                mx=nums[i];
+            }
+            if(nums[i]<mn){
+                mn=nums[i];
+            }
+        }  
+        return gcd(mx,mn);   
+                
+        }
+    
+    private int gcd(int a, int b){
+        while(b!=0){
+            int temp=b;
+            b=a%b;
+            a=temp;
+    
+        }
